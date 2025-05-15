@@ -1,92 +1,85 @@
 .header {
-    position: relative;
+    position: sticky !important;
+    top: 0;
     z-index: var(--z-header);
     padding: 20px 0;
     transform: translateY(-1px);
     animation: onMountBot 1s linear forwards;
     background: var(--color-white);
-}
+  }
 
-.header__container {
+  .header__container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     max-width: var(--container-max-width);
     margin: 0 auto;
     padding: 0 15px;
-}
+  }
 
-.header__logo {
+  .header__logo {
     flex-shrink: 0;
-}
+  }
 
-.header__logo img {
+  .header__logo img {
     height: auto;
-}
+  }
 
-@media screen and (max-width: 992px) {
+  @media screen and (max-width: 992px) {
     .header__logo img {
-        width: 160px;
+      width: 160px;
     }
-}
+  }
 
-@media screen and (max-width: 375px) {
+  @media screen and (max-width: 375px) {
     .header__logo img {
-        width: 120px;
+      width: 120px;
     }
-}
+  }
 
-.header__navigation {
+  .header__navigation {
     display: flex;
     align-items: center;
     gap: 60px;
-}
+  }
 
-@media screen and (max-width: 992px) {
+  @media screen and (max-width: 992px) {
     .header__navigation {
-        gap: 40px;
+      gap: 40px;
     }
-}
+  }
 
-.header__menu {
+  .header__menu {
     display: flex;
     gap: 84px;
     margin: 0;
     padding: 0;
     list-style: none;
-}
+  }
 
-@media screen and (max-width: 992px) {
+  @media screen and (max-width: 992px) {
     .header__menu {
-        gap: 40px;
+      gap: 40px;
     }
-}
+  }
 
-@media screen and (max-width: 768px) {
+  @media screen and (max-width: 768px) {
     .header__menu {
-        display: none;
+      display: none;
     }
-}
+  }
 
-.header__menu-item {
-    /* Empty for now */
-}
-
-.header__menu-link {
+  .header__menu-link {
     color: var(--color-black);
     font-family: var(--font-mono);
     font-size: 19px;
     font-weight: 400;
     line-height: normal;
     display: block;
-}
+  }
 
-@media screen and (max-width: 992px) {
+  @media screen and (max-width: 992px) {
     .header__menu-link {
-        font-size: 16px;
+      font-size: 16px;
     }
-}
-
-.header__btn {
-    /* Inherits styles from .btn */
-}
+  }

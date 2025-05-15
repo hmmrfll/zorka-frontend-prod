@@ -1,216 +1,234 @@
 .banner {
-    width: 100%;
-    height: 800px;
-    position: relative;
-    background: var(--color-white);
+	width: 100%;
+	height: 800px;
+	position: relative;
+	background: var(--color-white);
 }
 
 .banner__container {
-    position: relative;
-    height: 100%;
-    max-width: var(--container-max-width);
-    margin: 0 auto;
-    padding: 0 15px;
+	position: relative;
+	height: 100%;
+	max-width: var(--container-max-width);
+	margin: 0 auto;
+	padding: 0 15px;
 }
 
 .banner__content {
-    position: relative;
-    z-index: var(--z-content);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-end;
-    padding-bottom: 70px;
-    gap: 17px;
-    animation: onMountTop 1s ease-in-out;
-    pointer-events: none;
+	position: relative;
+	z-index: var(--z-content);
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-end;
+	padding-bottom: 70px;
+	gap: 17px;
+	animation: onMountTop 1s ease-in-out;
+	pointer-events: none;
 }
 
 .banner__title {
-    position: relative;
-    z-index: 3;
-    color: var(--color-black);
-    font-family: var(--font-brand);
-    font-size: 68px;
-    font-weight: 900;
-    line-height: normal;
-    margin: 0;
-    pointer-events: none;
+	width: 719px;
+	height: 228px;
+	position: relative;
+	z-index: 3;
+	color: var(--color-black);
+	pointer-events: none;
+	font-family: Poppins;
+	font-weight: 600;
+	font-size: 64px;
+	line-height: 118%;
+	letter-spacing: 0%;
+}
+
+.banner__subtitle-wrapper{
+    display: flex;
+    flex-direction: row;
+    gap: 17px;
+}
+
+.banner__subtitle {
+	width: 564px;
+	height: 96px;
+	font-family: Noto Mono;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 150%;
+	letter-spacing: 0%;
 }
 
 .banner__title span {
-    color: var(--color-white);
+	color: var(--color-white);
 }
 
 @media screen and (max-width: 1300px) {
-    .banner__title {
-        font-size: 60px;
-    }
+	.banner__title {
+		font-size: 60px;
+	}
 }
 
 @media screen and (max-width: 1200px) {
-    .banner__title {
-        font-size: 54px;
-    }
+	.banner__title {
+		font-size: 54px;
+	}
 }
 
 @media screen and (max-width: 1023px) {
-    .banner {
-        padding: 50px 0;
-        display: flex;
-        flex-direction: column-reverse;
-        height: auto;
-    }
+	.banner {
+		padding: 50px 0;
+		display: flex;
+		flex-direction: column-reverse;
+		height: auto;
+	}
 
-    .banner__title {
-        font-size: 50px;
-    }
+	.banner__title {
+		font-size: 50px;
+	}
 
-    .banner__content {
-        padding-bottom: 0;
-        pointer-events: all;
-    }
+	.banner__content {
+		padding-bottom: 0;
+		pointer-events: all;
+	}
 }
 
 @media screen and (max-width: 768px) {
-    .banner__title {
-        font-size: 42px;
-        max-width: 470px;
-        pointer-events: all;
-    }
+	.banner__title {
+		font-size: 42px;
+		max-width: 470px;
+		pointer-events: all;
+	}
 }
 
 @media screen and (max-width: 580px) {
-    .banner__title {
-        font-size: 26px;
-        max-width: 320px;
-        margin-top: 40px;
-    }
+	.banner__title {
+		font-size: 26px;
+		max-width: 320px;
+		margin-top: 40px;
+	}
 }
 
 .banner__canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: var(--z-canvas);
-    cursor: grab;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: var(--z-canvas);
+	cursor: grab;
 }
 
 .banner__canvas:active {
-    cursor: grabbing;
+	cursor: grabbing;
 }
 
 @media screen and (max-width: 920px) {
-    .banner__canvas {
-        position: relative;
-        width: 100%;
-    }
+	.banner__canvas {
+		position: relative;
+		width: 100%;
+	}
 }
 
 .banner__download-btn {
-    display: none;
-    color: var(--color-black);
-    font-family: var(--font-mono);
-    font-size: 18px;
-    font-weight: 400;
-    text-decoration: none;
-    margin-top: 27px;
-    pointer-events: all;
+	display: none;
+	color: var(--color-black);
+	font-family: var(--font-mono);
+	font-size: 18px;
+	font-weight: 400;
+	text-decoration: none;
+	margin-top: 27px;
+	pointer-events: all;
 }
 
 .banner__coming-soon {
-    min-width: 200px;
-    pointer-events: all;
+	min-width: 200px;
+	pointer-events: all;
 }
 
 .banner__mobile-cards {
-    min-height: 400px;
-    position: relative;
-    display: none;
+	min-height: 400px;
+	position: relative;
+	display: none;
 }
 
 @media screen and (max-width: 1023px) {
-    .banner__mobile-cards {
-        display: flex;
-    }
+	.banner__mobile-cards {
+		display: flex;
+	}
 }
 
 @media screen and (max-width: 580px) {
-    .banner__mobile-cards {
-        min-height: 300px;
-    }
+	.banner__mobile-cards {
+		min-height: 300px;
+	}
 }
 
 .banner__mobile-cards-left {
-    position: absolute;
-    z-index: 1;
-    left: -15px;
-    top: -50px;
-    width: 300px;
-    height: 100%;
-    clip-path: polygon(0 0, 100% 0, 71% 100%, 0 100%);
-    background: linear-gradient(202deg, rgba(0, 255, 56, 0.2) 14.43%, rgba(255, 0, 0, 0) 92.13%), #262725;
+	position: absolute;
+	z-index: 1;
+	left: -15px;
+	top: -50px;
+	width: 300px;
+	height: 100%;
+	clip-path: polygon(0 0, 100% 0, 71% 100%, 0 100%);
+	background: linear-gradient(202deg, rgba(0, 255, 56, 0.2) 14.43%, rgba(255, 0, 0, 0) 92.13%), #262725;
 }
 
 @media screen and (max-width: 768px) {
-    .banner__mobile-cards-left {
-        top: -40px;
-        width: 250px;
-    }
+	.banner__mobile-cards-left {
+		top: -40px;
+		width: 250px;
+	}
 }
 
 .banner__mobile-cards-right {
-    position: absolute;
-    right: -15px;
-    top: -90px;
-    width: 100%;
-    height: 100%;
-    background-color: #2e2824;
-    filter: blur(16px);
-    -webkit-filter: blur(16px);
+	position: absolute;
+	right: -15px;
+	top: -90px;
+	width: 100%;
+	height: 100%;
+	background-color: #2e2824;
+	filter: blur(16px);
+	-webkit-filter: blur(16px);
 }
 
 @media screen and (max-width: 768px) {
-    .banner__mobile-cards-right {
-        top: -70px;
-    }
+	.banner__mobile-cards-right {
+		top: -70px;
+	}
 }
 
 .banner__mobile-menu {
-    position: relative;
-    z-index: 3;
-    display: none;
-    flex-direction: column;
-    gap: 15px;
+	position: relative;
+	z-index: 3;
+	display: none;
+	flex-direction: column;
+	gap: 15px;
 }
 
 @media screen and (max-width: 1023px) {
-    .banner__mobile-menu {
-        display: flex;
-    }
+	.banner__mobile-menu {
+		display: flex;
+	}
 }
 
 @media screen and (max-width: 580px) {
-    .banner__mobile-menu .link {
-        font-size: 16px;
-    }
+	.banner__mobile-menu .link {
+		font-size: 16px;
+	}
 }
 
 @media screen and (max-width: 600px) {
-    .banner__content {
-        padding: 0 20px;
-    }
+	.banner__content {
+		padding: 0 20px;
+	}
 
-    .banner__download-btn {
-        display: block;
-    }
+	.banner__download-btn {
+		display: block;
+	}
 
-    .banner__coming-soon {
-        width: 100%;
-        text-align: center;
-        padding: 12px 20px;
-    }
+	.banner__coming-soon {
+		width: 100%;
+		text-align: center;
+		padding: 12px 20px;
+	}
 }

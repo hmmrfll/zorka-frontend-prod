@@ -36,7 +36,8 @@ export interface NavigationItem {
 export interface ContactInfo {
 	email: string;
 	twitter?: string;
-	github?: string;
+	service?: string;
+	google?: string;
 }
 
 export interface ApiResponse<T> {

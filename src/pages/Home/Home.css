@@ -1,10 +1,16 @@
 .home {
   min-height: 100vh;
-  background: var(--color-white); /* Изменено с gray на white */
+  background: var(--color-white);
+}
+
+.home__sticky-banner {
+  position: sticky;
+  top: 55px;
 }
 
 .home__content {
-  background: var(--color-white); /* Изменено с gray на white */
+  z-index: 99999;
+  position: sticky;
   padding-top: 38px;
 }
 
@@ -15,7 +21,7 @@
 }
 
 .home__description {
-  color: var(--color-dark);
+  color: #262725;
   font-family: var(--font-mono);
   font-size: 20px;
   font-weight: 400;
@@ -27,6 +33,6 @@
 /* Responsive */
 @media (max-width: 600px) {
   .home__description {
-      font-size: 18px;
+    font-size: 18px;
   }
 }

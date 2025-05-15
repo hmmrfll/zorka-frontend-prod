@@ -18,6 +18,7 @@
     /* Colors */
     --color-black: #0b0b0b;
     --color-white: #ffffff;
+    --color-white-rgb: rgba(236, 236, 236, 1);
     --color-gray: #efefef;
     --color-dark-gray: #323232;
     --color-medium-gray: #b6b6b6;

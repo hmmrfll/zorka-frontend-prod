@@ -18,7 +18,8 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 export const CONTACT_INFO: ContactInfo = {
     email: 'info@noframe.io',
     twitter: 'https://twitter.com/noframe_io',
-    github: 'https://github.com/noframe-core',
+    service: 'https://noframe.io/',
+    google: 'https://google.com'
 };
 
 export const API_ENDPOINTS = {

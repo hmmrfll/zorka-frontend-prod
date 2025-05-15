@@ -1,6 +1,6 @@
 .App {
   min-height: 100vh;
-  background: var(--color-white);
+  background: var(--color-white-rgb);
 }
 
 /* Global utility classes */

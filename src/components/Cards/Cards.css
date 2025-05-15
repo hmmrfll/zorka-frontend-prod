@@ -10,10 +10,10 @@
   width: 380px;
   height: 223px;
   border: 1px solid var(--color-black);
-  background: var(--color-white); /* Изменено с gray на white */
+  background: #efefef;
   display: flex;
   flex-direction: column;
-  transition: all var(--transition-normal);
+  transition: all 0.3s ease;
   position: relative;
 }
 
@@ -22,19 +22,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: var(--color-white); /* Изменено с gray на white */
+  background: #efefef;
   z-index: var(--z-content);
 }
 
-/* Остальные стили остаются без изменений */
 .cards__number {
   color: var(--color-black);
   font-family: var(--font-mono);
   font-size: 22px;
   font-weight: 400;
-  line-height: 1.26;
+  line-height: 126.164%;
   margin: 42px 0 0 40px;
-  transition: color var(--transition-slow);
+  transition: color 0.5s ease;
 }
 
 .cards__content {
@@ -46,8 +45,8 @@
   font-family: var(--font-mono);
   font-size: 22px;
   font-weight: 400;
-  line-height: 1.26;
-  transition: color var(--transition-slow);
+  line-height: 126.164%;
+  transition: color 0.5s ease;
 }
 
 .cards__description {
@@ -55,12 +54,12 @@
   font-family: var(--font-mono);
   font-size: 22px;
   font-weight: 400;
-  line-height: 1.26;
+  line-height: 126.164%;
   margin-top: 20px;
-  transition: color var(--transition-slow);
+  transition: color 0.5s ease;
 }
 
-/* Gradient variant */
+/* Gradient variant (01) */
 .cards__item--gradient {
   position: relative;
 }
@@ -72,10 +71,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(18deg, var(--color-purple) -6.25%, var(--color-green) 97.34%);
+  background: linear-gradient(18deg, #6000f3 -6.25%, #26d6a5 97.34%);
   opacity: 0;
-  transition: opacity var(--transition-slow);
+  transition: opacity 0.5s ease;
   pointer-events: none;
+  z-index: 1;
 }
 
 .cards__item--gradient:hover::after {
@@ -85,12 +85,12 @@
 .cards__item--gradient:hover .cards__number,
 .cards__item--gradient:hover .cards__title,
 .cards__item--gradient:hover .cards__description {
-  color: var(--color-white);
+  color: var(--color-white) !important;
   position: relative;
-  z-index: var(--z-content);
+  z-index: 5;
 }
 
-/* Offset variant */
+/* Offset variant (02) */
 .cards__item--offset {
   border: none;
 }
@@ -104,16 +104,16 @@
   border: 1px solid var(--color-black);
   background: #40dbaf;
   z-index: 0;
-  transition: all var(--transition-normal);
+  transition: all 0.3s ease;
 }
 
 .cards__item--offset:hover {
   margin: 10px 10px -10px -10px;
 }
 
-/* Expandable variant */
+/* Expandable variant (03) */
 .cards__item--expandable {
-  transition: all var(--transition-normal);
+  transition: all 0.3s ease;
 }
 
 .cards__item--expandable:hover {
@@ -122,17 +122,17 @@
   height: 260px;
 }
 
-.cards__top-box {
-  transition: all var(--transition-normal);
+.cards__expandable-top {
+  transition: all 0.3s ease;
   transform: translate(0px, -24px) rotateX(77deg);
 }
 
-.cards__bottom-box {
-  transition: all var(--transition-normal);
+.cards__expandable-bottom {
+  transition: all 0.3s ease;
   transform: translate(0px, 24px) rotateX(77deg);
 }
 
-.cards__item--expandable:hover .cards__top-box {
+.cards__item--expandable:hover .cards__expandable-top {
   width: 100%;
   border: 1px solid var(--color-black);
   height: 50px;
@@ -140,7 +140,7 @@
   transform: translate(0px, -23px) rotateX(0deg) scale(1.005);
 }
 
-.cards__item--expandable:hover .cards__bottom-box {
+.cards__item--expandable:hover .cards__expandable-bottom {
   width: 100%;
   border: 1px solid var(--color-black);
   height: 50px;
@@ -153,19 +153,19 @@
 /* Responsive */
 @media (max-width: 1180px) {
   .cards__item {
-      width: 346px;
-      height: 385px;
+    width: 346px;
+    height: 385px;
   }
 
   .cards__bg {
-      width: 343px;
-      height: 385px;
+    width: 343px;
+    height: 385px;
   }
 }
 
 @media (max-width: 1076px) {
   .cards {
-      flex-direction: column;
-      gap: 25px;
+    flex-direction: column;
+    gap: 25px;
   }
 }
