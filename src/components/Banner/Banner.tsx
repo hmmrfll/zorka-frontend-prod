@@ -15,10 +15,6 @@ export const Banner: React.FC = () => {
 			className="banner"
 			ref={containerRef}
 		>
-      <canvas
-					ref={canvasRef}
-					className="banner__canvas"
-				/>
 			<div className="banner__container">
 				<div className="banner__content">
 					<div className="banner__title">Quantitative strategies for crypto options</div>
@@ -30,6 +26,11 @@ export const Banner: React.FC = () => {
 						<ArrowIcon />
 					</div>
 				</div>
+				<canvas
+					ref={canvasRef}
+					className="banner__canvas"
+					id="banner__animate"
+				/>
 			</div>
 			{/* <LegacyEffects /> */}
 		</section>

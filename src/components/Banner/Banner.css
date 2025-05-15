@@ -23,7 +23,6 @@
 	justify-content: flex-end;
 	padding-bottom: 70px;
 	gap: 17px;
-	animation: onMountTop 1s ease-in-out;
 	pointer-events: none;
 }
 

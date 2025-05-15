@@ -19,20 +19,27 @@ class Dot {
 	baseY: number;
 	dx: number | null = null;
 	dy: number | null = null;
+
 	constructor(private mouse: Mouse) {
 		this.x = mouse.startX;
 		this.y = mouse.startY;
 		this.baseX = this.x;
 		this.baseY = this.y;
 	}
+
 	update() {
 		this.dx = this.mouse.startX - this.x;
 		this.dy = this.mouse.startY - this.y;
-		if (this.x !== this.mouse.startX) this.x += this.dx / 30;
-		if (this.y !== this.mouse.startY) this.y += this.dy / 30;
+		if (this.x !== this.mouse.startX) {
+			this.x += this.dx / 30;
+		}
+		if (this.y !== this.mouse.startY) {
+			this.y += this.dy / 30;
+		}
 	}
-	draw(ctx: CanvasRenderingContext2D) {
-		// Optional visual debug
+
+	draw() {
+		// Optional visual debug - в старом коде закомментирован
 	}
 }
 
@@ -133,13 +140,16 @@ export const useCanvasAnimation = (
 		const container = containerRef.current;
 		if (!canvas || !container) return;
 
-		const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+		const ctx = canvas.getContext('2d');
 		if (!ctx) return;
 
-		const rect = container.getBoundingClientRect();
-		canvas.width = rect.width;
-		canvas.height = rect.height - 50;
+		// Получаем размеры контейнера
+		const bannerRect = container.getBoundingClientRect();
+		canvas.width = bannerRect.width;
+		canvas.height = bannerRect.height - 50;
+
 		const canvasPos = canvas.getBoundingClientRect();
+		let scrollY = window.scrollY;
 
 		const mouse: Mouse = {
 			startX: canvas.width / 1.6,
@@ -148,21 +158,20 @@ export const useCanvasAnimation = (
 		};
 
 		const dot = new Dot(mouse);
-		let scrollY = window.scrollY;
-		let dragDrop = new DragDrop(canvas.width / 1.6, canvas.height / 2, 70, 20, 600, dot, ctx, canvas);
 
-		const lineConfig = (): LineConfig[] => {
-			if (window.innerWidth <= 520)
-				return [
-					{ x: 250, y: 180 },
-					{ x: canvas.width / 1.12, y: 0 },
-					{ x: 250, y: 200 },
-					{ x: 20, y: 150 },
-					{ x: 25, y: 170 },
-					{ x: 170, y: 130 },
-					{ x: 170, y: 50 },
-				];
-			if (window.innerWidth < 769)
+		// Настройка DragDrop в зависимости от размера экрана (как в старом коде)
+		let dragDrop: DragDrop;
+		if (window.innerWidth > 520 && window.innerWidth < 769) {
+			dragDrop = new DragDrop(canvas.width / 1.4, canvas.height / 2, 70, 20, 600, dot, ctx, canvas);
+		} else if (window.innerWidth <= 520) {
+			dragDrop = new DragDrop(canvas.width / 1.6, canvas.height / 2, 50, 13, 300, dot, ctx, canvas);
+		} else {
+			dragDrop = new DragDrop(canvas.width / 1.6, canvas.height / 2, 70, 20, 600, dot, ctx, canvas);
+		}
+
+		// Настройка линий в зависимости от размера экрана (точно как в старом коде)
+		const getLineNumbers = (): LineConfig[] => {
+			if (window.innerWidth > 520 && window.innerWidth < 769) {
 				return [
 					{ x: 600, y: 250 },
 					{ x: canvas.width / 1.12, y: 0 },
@@ -172,98 +181,214 @@ export const useCanvasAnimation = (
 					{ x: 250, y: 150 },
 					{ x: 300, y: 25 },
 				];
-			return [
-				{ x: 800, y: 450 },
-				{ x: canvas.width / 1.2, y: 0 },
-				{ x: 800, y: 600 },
-				{ x: 100, y: 400 },
-				{ x: 50, y: 500 },
-				{ x: 450, y: 350 },
-				{ x: 500, y: 150 },
-			];
+			} else if (window.innerWidth <= 520) {
+				return [
+					{ x: 250, y: 180 },
+					{ x: canvas.width / 1.12, y: 0 },
+					{ x: 250, y: 200 },
+					{ x: 20, y: 150 },
+					{ x: 25, y: 170 },
+					{ x: 170, y: 130 },
+					{ x: 170, y: 50 },
+				];
+			} else {
+				return [
+					{ x: 800, y: 450 },
+					{ x: canvas.width / 1.2, y: 0 },
+					{ x: 800, y: 600 },
+					{ x: 100, y: 400 },
+					{ x: 50, y: 500 },
+					{ x: 450, y: 350 },
+					{ x: 500, y: 150 },
+				];
+			}
 		};
 
-		const lines = lineConfig().map(
-			(pos) => new Line(dragDrop.x - pos.x, dragDrop.y + pos.y, dragDrop.x, dragDrop.y, ctx, canvas),
-		);
+		const lineNumbers = getLineNumbers();
 
-		const mouseDown = (eventX: number, eventY: number, scrollY: number) => {
+		// ВОТ ИСПРАВЛЕНИЕ! Создаем линии с правильными знаками как в оригинале
+		const lines: Line[] = [
+			// Line 0: dragDrop.x - x, dragDrop.y - y
+			new Line(
+				dragDrop.x - lineNumbers[0].x,
+				dragDrop.y - lineNumbers[0].y,
+				dragDrop.x,
+				dragDrop.y,
+				ctx,
+				canvas
+			),
+			// Line 1: dragDrop.x - x, dragDrop.y + y (плюс для y!)
+			new Line(
+				dragDrop.x - lineNumbers[1].x,
+				dragDrop.y + lineNumbers[1].y,
+				dragDrop.x,
+				dragDrop.y,
+				ctx,
+				canvas
+			),
+			// Line 2: dragDrop.x - x, dragDrop.y + y (плюс для y!)
+			new Line(
+				dragDrop.x - lineNumbers[2].x,
+				dragDrop.y + lineNumbers[2].y,
+				dragDrop.x,
+				dragDrop.y,
+				ctx,
+				canvas
+			),
+			// Line 3: dragDrop.x + x, dragDrop.y + y (плюс для обоих!)
+			new Line(
+				dragDrop.x + lineNumbers[3].x,
+				dragDrop.y + lineNumbers[3].y,
+				dragDrop.x,
+				dragDrop.y,
+				ctx,
+				canvas
+			),
+			// Line 4: dragDrop.x - x, dragDrop.y - y
+			new Line(
+				dragDrop.x - lineNumbers[4].x,
+				dragDrop.y - lineNumbers[4].y,
+				dragDrop.x,
+				dragDrop.y,
+				ctx,
+				canvas
+			),
+			// Line 5: dragDrop.x + x, dragDrop.y - y (плюс для x, минус для y!)
+			new Line(
+				dragDrop.x + lineNumbers[5].x,
+				dragDrop.y - lineNumbers[5].y,
+				dragDrop.x,
+				dragDrop.y,
+				ctx,
+				canvas
+			),
+			// Line 6: dragDrop.x + x, dragDrop.y + y (плюс для обоих!)
+			new Line(
+				dragDrop.x + lineNumbers[6].x,
+				dragDrop.y + lineNumbers[6].y,
+				dragDrop.x,
+				dragDrop.y,
+				ctx,
+				canvas
+			),
+		];
+
+		// Обработчики событий мыши/касания
+		const mouseDown = (eventX: number, eventY: number, event: Event, scrollYDown: number) => {
 			const cursorX = eventX - canvasPos.left;
-			const cursorY = eventY - canvasPos.top + scrollY;
+			const cursorY = eventY - canvasPos.top + scrollYDown;
+
 			mouse.dragging = true;
+			event.preventDefault();
+
 			mouse.startX = cursorX;
 			mouse.startY = cursorY;
 			dragDrop.update();
+
 			const cosX = dragDrop.x + Math.cos(dragDrop.angle) * dragDrop.r4;
 			const sinY = dragDrop.y + Math.sin(dragDrop.angle) * dragDrop.r4;
-			lines.forEach((line) => {
+
+			lines.forEach(line => {
 				line.x2 = cosX;
 				line.y2 = sinY;
 			});
 		};
 
-		const mouseMove = (eventX: number, eventY: number, scrollY: number) => {
+		const mouseMove = (eventX: number, eventY: number, scrollYDown: number) => {
 			const cursorX = eventX - canvasPos.left;
-			const cursorY = eventY - canvasPos.top + scrollY;
+			const cursorY = eventY - canvasPos.top + scrollYDown;
+
 			mouse.startX = cursorX;
 			mouse.startY = cursorY;
 		};
 
+		const mouseUp = () => {
+			mouse.dragging = false;
+		};
+
+		// Обработчик скролла
+		const onScroll = () => {
+			if (window.innerWidth < 921) {
+				scrollY = window.screenTop || 0;
+			} else {
+				scrollY = window.scrollY;
+			}
+		};
+
+		// Обработчики для разных устройств
+		const handleMouseDown = (e: MouseEvent) => {
+			if ((e.target as HTMLElement).tagName.toLowerCase() === 'input') {
+				return;
+			}
+			mouseDown(e.clientX, e.clientY, e, scrollY);
+		};
+
+		const handleMouseMove = (e: MouseEvent) => {
+			mouseMove(e.clientX, e.clientY, scrollY);
+		};
+
+		const handleMouseUp = (e: MouseEvent) => {
+			mouseUp();
+		};
+
+		// Touch события для мобильных устройств
+		const handleTouchStart = (e: TouchEvent) => {
+			const touch = e.touches[0] || e.changedTouches[0];
+			mouseDown(touch.pageX, touch.pageY, e, scrollY);
+		};
+
+		const handleTouchMove = (e: TouchEvent) => {
+			const touch = e.touches[0] || e.changedTouches[0];
+			mouseMove(touch.pageX, touch.pageY, scrollY);
+		};
+
+		const handleTouchEnd = (e: TouchEvent) => {
+			mouseUp();
+		};
+
+		// Настройка событий в зависимости от размера экрана
+		if (window.innerWidth < 921) {
+			canvas.addEventListener('touchstart', handleTouchStart, { passive: false });
+			canvas.addEventListener('touchmove', handleTouchMove, { passive: false });
+			canvas.addEventListener('touchend', handleTouchEnd);
+		} else {
+			window.addEventListener('mousedown', handleMouseDown);
+			window.addEventListener('mousemove', handleMouseMove);
+			window.addEventListener('mouseup', handleMouseUp);
+		}
+
+		window.addEventListener('scroll', onScroll);
+
+		// Основной цикл анимации
 		const loop = () => {
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
-			lines.forEach((line) => {
+
+			lines.forEach(line => {
 				line.x2 = dragDrop.cosX;
 				line.y2 = dragDrop.sinY;
 				line.update();
 				line.draw();
 			});
+
 			dragDrop.update();
 			dragDrop.draw();
 			dot.update();
-			dot.draw(ctx);
+			dot.draw();
+
 			requestAnimationFrame(loop);
 		};
+
 		loop();
 
-		const scrollHandler = () => {
-			scrollY = window.innerWidth < 921 ? window.screenTop : window.scrollY;
-		};
-
-		const mouseHandler = (e: MouseEvent) => {
-			if ((e.target as HTMLElement).tagName.toLowerCase() !== 'input') {
-				mouseDown(e.clientX, e.clientY, scrollY);
-			}
-		};
-
-		const moveHandler = (e: MouseEvent) => mouseMove(e.clientX, e.clientY, scrollY);
-
-		if (window.innerWidth < 921) {
-			canvas.addEventListener(
-				'touchstart',
-				(e) => {
-					const touch = e.touches[0];
-					mouseDown(touch.pageX, touch.pageY, scrollY);
-				},
-				{ passive: false },
-			);
-			canvas.addEventListener(
-				'touchmove',
-				(e) => {
-					const touch = e.touches[0];
-					mouseMove(touch.pageX, touch.pageY, scrollY);
-				},
-				{ passive: false },
-			);
-		} else {
-			window.addEventListener('mousedown', mouseHandler);
-			window.addEventListener('mousemove', moveHandler);
-		}
-		window.addEventListener('scroll', scrollHandler);
-
+		// Очистка при размонтировании
 		return () => {
-			window.removeEventListener('mousedown', mouseHandler);
-			window.removeEventListener('mousemove', moveHandler);
-			window.removeEventListener('scroll', scrollHandler);
+			window.removeEventListener('mousedown', handleMouseDown);
+			window.removeEventListener('mousemove', handleMouseMove);
+			window.removeEventListener('mouseup', handleMouseUp);
+			window.removeEventListener('scroll', onScroll);
+			canvas.removeEventListener('touchstart', handleTouchStart);
+			canvas.removeEventListener('touchmove', handleTouchMove);
+			canvas.removeEventListener('touchend', handleTouchEnd);
 		};
 	}, [canvasRef, containerRef]);
 };

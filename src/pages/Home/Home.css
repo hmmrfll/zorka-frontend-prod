@@ -1,33 +1,18 @@
 .home {
   min-height: 100vh;
   background: var(--color-white);
-}
 
-.home__sticky-banner {
-  position: sticky;
-  top: 55px;
+
 }
 
 .home__content {
-  z-index: 99999;
   position: sticky;
-  padding-top: 38px;
+  flex-direction: column;
+  width: 100%;
 }
 
-.home__container {
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-.home__description {
-  color: #262725;
-  font-family: var(--font-mono);
-  font-size: 20px;
-  font-weight: 400;
-  line-height: normal;
-  max-width: 573.748px;
-  margin: 0;
+.home__section-first{
+  height: 1036px;
 }
 
 /* Responsive */
