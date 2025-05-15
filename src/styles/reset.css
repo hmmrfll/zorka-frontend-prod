@@ -7,13 +7,16 @@
 html {
 	line-height: 1.15;
 	-webkit-text-size-adjust: 100%;
+	scroll-behavior: smooth;
 }
 
 body {
 	margin: 0;
 	font-family: var(--font-mono);
 	font-size: 16px;
-	background-color: var(--color-gray);
+	font-weight: 400;
+	background-color: var(--color-white);
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	overflow-x: hidden;
 }
 
@@ -64,4 +67,21 @@ h6 {
 input {
 	font: inherit;
 	outline: none;
+}
+
+/* Focus styles */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+	outline: 2px solid var(--color-purple);
+	outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+	.header,
+	.footer,
+	.newsletter {
+		display: none;
+	}
 }
