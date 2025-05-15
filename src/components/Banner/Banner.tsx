@@ -46,8 +46,7 @@ export const Banner: React.FC = () => {
           </li>
         </ul>
       </div>
-      {/* LegacyEffects теперь работает ограниченное время */}
-      <LegacyEffects />
+      {/* <LegacyEffects /> */}
     </section>
   );
 };
