@@ -1,0 +1,32 @@
+:root {
+    /* Colors */
+    --color-black: #0b0b0b;
+    --color-white: #ffffff;
+    --color-gray: #efefef;
+    --color-dark-gray: #323232;
+    --color-medium-gray: #b6b6b6;
+    --color-light-gray: #f2f2f2;
+    --color-green: #26d6a5;
+    --color-purple: #6000f3;
+    --color-pink: #c0f;
+    --color-dark: #262725;
+
+    /* Fonts */
+    --font-mono: 'Noto Mono', monospace;
+    --font-poppins: 'Poppins', sans-serif;
+
+    /* Sizes */
+    --container-max-width: 1180px;
+    --header-height: 60px;
+
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+
+    /* Z-indexes */
+    --z-header: 100;
+    --z-modal: 1000;
+    --z-canvas: 1;
+    --z-content: 5;
+  }

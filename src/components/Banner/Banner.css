@@ -1,0 +1,130 @@
+.banner {
+	width: 100%;
+	height: 800px;
+	position: relative;
+	background: var(--color-gray);
+}
+
+.banner__container {
+	position: relative;
+	height: 100%;
+	max-width: var(--container-max-width);
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
+.banner__content {
+	position: relative;
+	z-index: var(--z-content);
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-end;
+	padding-bottom: 70px;
+	gap: 17px;
+	animation: slideUp 1s ease-out;
+}
+
+.banner__title {
+	max-width: 719px;
+	color: var(--color-black);
+	font-family: var(--font-poppins);
+	font-size: 46px;
+	font-weight: 600;
+	line-height: 1.185;
+	margin: 0;
+}
+
+.banner__canvas {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: var(--z-canvas);
+	cursor: grab;
+}
+
+.banner__canvas:active {
+	cursor: grabbing;
+}
+
+.banner__download-btn {
+	color: var(--color-black);
+	font-family: var(--font-mono);
+	font-size: 18px;
+	font-weight: 400;
+	text-decoration: none;
+	display: none;
+	margin-top: 27px;
+}
+
+.banner__coming-soon {
+	display: inline-flex;
+	height: 42px;
+	padding: 9px 29px;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid var(--color-black);
+	background: var(--color-gray);
+	color: var(--color-black);
+	font-family: var(--font-mono);
+	font-size: 14px;
+	text-decoration: none;
+	transition: all var(--transition-normal);
+}
+
+.banner__coming-soon:hover {
+	background: var(--color-black);
+	color: var(--color-white);
+}
+
+/* Responsive */
+@media (max-width: 920px) {
+	.banner {
+		display: flex;
+		flex-direction: column-reverse;
+		height: auto;
+	}
+
+	.banner__canvas {
+		position: relative;
+		width: 100%;
+	}
+
+	.banner__content {
+		padding-bottom: 0;
+		pointer-events: all;
+	}
+
+	.banner__title {
+		font-size: 50px;
+		max-width: 470px;
+		pointer-events: all;
+	}
+}
+
+@media (max-width: 600px) {
+	.banner__content {
+		padding: 0 20px;
+	}
+
+	.banner__download-btn {
+		display: block;
+	}
+
+	.banner__coming-soon {
+		width: 100%;
+		text-align: center;
+		padding: 12px 20px;
+	}
+}
+
+@media (max-width: 520px) {
+	.banner__title {
+		max-width: 320px;
+		font-size: 32px;
+		margin-top: 40px;
+	}
+}
