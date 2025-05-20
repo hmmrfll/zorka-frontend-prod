@@ -12,9 +12,6 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
         <>
             <Header />
             <main className="main">{children}</main>
-            <div className="layers-wrapper">
-                {/* This is where special effects will be rendered */}
-            </div>
             <Footer />
         </>
     );

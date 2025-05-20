@@ -1,6 +1,8 @@
 .home-section-cards {
   margin-top: 38.99px;
   display: flex;
+  position: relative;
+  z-index: 5; /* Карточки выше canvas */
 }
 
 .home-section-card {
@@ -12,9 +14,9 @@
   border-bottom: 1px solid var(--color-black);
   border-left: 1px solid var(--color-black);
   padding: 52px 19px;
-  position: relative; /* Добавляем для позиционирования псевдоэлементов если понадобится */
-  transition: all 0.3s ease;
-  background-color: transparent; /* Явно указываем начальный фон */
+  position: relative;
+  cursor: pointer;
+  overflow: hidden; /* Важно, чтобы не вылезал анимированный фон */
 }
 
 /* У последней карточки добавляем правую границу */
@@ -22,17 +24,39 @@
   border-right: 1px solid var(--color-black);
 }
 
-/* Стили при наведении */
-.home-section-card:hover {
-  background: linear-gradient(264.94deg, #6000F3 -16.64%, #26D6A5 98.19%);
-  border-color: transparent;
+/* Псевдоэлемент с анимированным градиентом */
+.home-section-card::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(264.94deg, #6000F3, #26D6A5, #6000F3);
+  background-size: 200% 200%;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.5s;
+  animation: gradientMove 6s ease-in-out infinite;
+  pointer-events: none;
 }
 
-/* Явно указываем все селекторы текстовых элементов при наведении */
+/* При наведении — включаем градиент */
+.home-section-card:hover::after,
+.home-section-card--hovered::after {
+  opacity: 1;
+}
+
+/* Поверх градиента — белый текст */
 .home-section-card:hover .home-section-card-title,
 .home-section-card:hover .home-section-card-subtitle,
-.home-section-card:hover .home-section-card-content {
-  color: white !important; /* !important для перезаписи возможных конфликтующих стилей */
+.home-section-card:hover .home-section-card-content,
+.home-section-card--hovered .home-section-card-title,
+.home-section-card--hovered .home-section-card-subtitle,
+.home-section-card--hovered .home-section-card-content {
+  color: white !important;
+  position: relative;
+  z-index: 2;
 }
 
 .home-section-card-header {
@@ -41,6 +65,8 @@
   flex-direction: column;
   gap: 12px;
   margin-bottom: 276px;
+  position: relative;
+  z-index: 2;
 }
 
 .home-section-card-title {
@@ -68,4 +94,32 @@
   line-height: 150%;
   letter-spacing: 0%;
   transition: color 0.3s ease;
+  position: relative;
+  z-index: 2;
+  white-space: pre-line; /* для \n-переносов */
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .home-section-cards {
+    flex-direction: column;
+  }
+
+  .home-section-card {
+    height: auto;
+    min-height: 300px;
+  }
+}
+
+/* Анимация градиента */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

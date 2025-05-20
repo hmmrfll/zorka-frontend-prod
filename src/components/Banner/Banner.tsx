@@ -8,7 +8,7 @@ export const Banner: React.FC = () => {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const containerRef = useRef<HTMLDivElement>(null);
 
-	useCanvasAnimation(canvasRef, containerRef);
+	// useCanvasAnimation(canvasRef, containerRef);
 
 	return (
 		<section

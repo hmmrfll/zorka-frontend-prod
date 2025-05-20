@@ -13,7 +13,33 @@
 }
 
 .home__section-first {
-	height: 1036px;
+	height: 676px;
+}
+
+.home__section-second {
+	width: 100%;
+	position: relative;
+	height: 1033px;
+	background-color: var(--color-dark-gray);
+	padding: 58px;
+}
+
+.home__section-second-title {
+	color: var(--color-white);
+	font-family: Poppins;
+	font-weight: 600;
+	font-size: 64px;
+	line-height: 118%;
+	letter-spacing: 0%;
+}
+
+.home__section-second-subtitle {
+	color: var(--color-white);
+	font-family: Noto Mono;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 150%;
+	letter-spacing: 0%;
 }
 
 .home__section-first-title-wrapper {
@@ -62,13 +88,13 @@
 	border-right: 1px solid var(--color-black);
 }
 
-.home__section-first-card-header{
+.home__section-first-card-header {
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
 }
 
-.home__section-first-card-title{
+.home__section-first-card-title {
 	font-family: Noto Mono;
 	font-weight: 400;
 	font-size: 22px;
@@ -76,7 +102,7 @@
 	letter-spacing: 0%;
 }
 
-.home__section-first-card-subtitle{
+.home__section-first-card-subtitle {
 	font-family: Noto Mono;
 	font-weight: 400;
 	font-size: 36px;
@@ -84,7 +110,7 @@
 	letter-spacing: 0%;
 }
 
-.home__section-first-card-content{
+.home__section-first-card-content {
 	font-family: Noto Mono;
 	font-weight: 400;
 	font-size: 16px;
