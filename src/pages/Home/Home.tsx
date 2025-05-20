@@ -5,80 +5,53 @@ import { InfoBox } from '../../components/InfoBox/InfoBox';
 import './Home.css';
 import { GradientSphere } from '../../../public/img/GradientSphere';
 import { WhiteSphere } from '../../../public/img/WhiteSphere';
+import { investSection, infoBox, strategiesSection } from '../../data/homeContent';
 
 export const Home: React.FC = () => {
-	const cardsData = [
-		{
-			number: '01',
-			title: 'Capital Protection',
-			content: 'Using options to mitigate significant market downturns, preserving asset value.',
-		},
-		{
-			number: '02',
-			title: 'Volatility Monetization',
-			content: 'Consistently capturing premiums from selling options priced above actual market volatility.',
-		},
-		{
-			number: '03',
-			title: 'Active Management',
-			content: 'Continuous monitoring and adaptive strategy execution to optimize performance and risk.',
-		},
-	];
-
 	return (
 		<div className="home">
+			{/* Баннер */}
 			<Banner />
+
+			{/* Секция "How We Invest" */}
 			<div className="home__content">
-				<div className="home__section-first">
-					<div className="home__section-first-title-wrapper">
-						<div className="home__section-first-title">HOW WE INVEST</div>
-						<div className="home__section-first-subtitle">
-							Our approach leverages advanced options strategies designed specifically for crypto markets. We focus on:
-						</div>
+				<div className="home__invest-section">
+					<div className="home__invest-title-wrapper">
+						<div className="home__invest-title">{investSection.title}</div>
+						<div className="home__invest-subtitle">{investSection.subtitle}</div>
 					</div>
-					<Cards cards={cardsData} />
+					<Cards cards={investSection.cards} />
 				</div>
 			</div>
 
-			<div className="home__section-check">
-				<InfoBox text="All client assets remain fully under their own custody, ensuring maximum security and transparency." />
+			{/* Секция с информационным блоком */}
+			<div className="home__info-section">
+				<InfoBox text={infoBox.text} />
 			</div>
 
-			<div className="home__section-second">
-				<div className="home__section-second-content">
-					<div className="home__section-second-title">STRATEGIES</div>
-					<div className="home__section-second-subtitle">
-						Our approach leverages advanced options strategies designed specifically for crypto markets.
-						<br /> We focus on:
-					</div>
+			{/* Секция "Strategies" */}
+			<div className="home__strategies-section">
+				<div className="home__strategies-content">
+					<div className="home__strategies-title">{strategiesSection.title}</div>
+					<div className="home__strategies-subtitle">{strategiesSection.subtitle}</div>
 
-					<div className="home__section-second-cards">
-						<div className="home__section-second-card">
-							<div className="home__section-second-card-title">HEDGE BTC</div>
-							<div className="home__section-second-card-subtitle">Zenith</div>
-							<div className="home__section-second-card-description">
-								Accumulate BTC with downside protectionGrow your Bitcoin holdings by effectively hedging market
-								downturns through strategic options trading
+					<div className="home__strategies-cards">
+						{strategiesSection.cards.map((card, index) => (
+							<div
+								key={index}
+								className="home__strategies-card"
+							>
+								<div className="home__strategies-card-title">{card.title}</div>
+								<div className="home__strategies-card-subtitle">{card.subtitle}</div>
+								<div className="home__strategies-card-description">{card.description}</div>
+								<div className="home__strategies-card-img">
+									{card.sphereType === 'gradient' ? <GradientSphere /> : <WhiteSphere />}
+								</div>
 							</div>
-							<div className="home__section-second-card-img">
-								<GradientSphere />
-							</div>
-						</div>
-						<div className="home__section-second-card">
-							<div className="home__section-second-card-title">YIELD ON BTC</div>
-							<div className="home__section-second-card-subtitle">Aurora</div>
-							<div className="home__section-second-card-description">
-								Consistent returns from volatility premium Generate steady income by capitalizing on BTC options premium
-								exceeding realized volatility.
-							</div>
-							<div className="home__section-second-card-img">
-								<WhiteSphere />
-							</div>
-						</div>
+						))}
 					</div>
 				</div>
 			</div>
-
 		</div>
 	);
 };

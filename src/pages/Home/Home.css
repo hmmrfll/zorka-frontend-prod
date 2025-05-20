@@ -1,22 +1,141 @@
-.home {
+/* src/pages/Home/Home.css */
+
+/**
+ * СОДЕРЖАНИЕ:
+ * 1. Общие стили страницы
+ * 2. Секция "How We Invest"
+ * 3. Секция InfoBox
+ * 4. Секция "Strategies"
+ * 5. Адаптивные стили
+ */
+
+/* 1. ОБЩИЕ СТИЛИ СТРАНИЦЫ
+   ========================================================================== */
+
+   .home {
 	min-height: 100vh;
 	background: var(--color-white);
 }
 
+/* 2. СЕКЦИЯ "HOW WE INVEST"
+   ========================================================================== */
+
+/* Контейнер содержимого */
 .home__content {
 	position: sticky;
 	flex-direction: column;
 	width: 100%;
-	max-width: var(--container-max-width); /* Добавить максимальную ширину */
-	margin: 0 auto; /* Центрирование */
-	padding: 0 130px; /* Отступы по бокам, как в других компонентах */
+	max-width: var(--container-max-width);
+	margin: 0 auto;
+	padding: 0 130px;
 }
 
-.home__section-first {
+/* Основной блок секции инвестиций */
+.home__invest-section {
 	height: 676px;
 }
 
-.home__section-second {
+/* Контейнер заголовка и подзаголовка */
+.home__invest-title-wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/* Заголовок секции */
+.home__invest-title {
+	font-family: Poppins;
+	font-weight: 600;
+	font-size: 24px;
+	line-height: 118%;
+	letter-spacing: 0%;
+}
+
+/* Подзаголовок секции */
+.home__invest-subtitle {
+	max-width: 570px;
+	font-family: Noto Mono;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 150%;
+	letter-spacing: 0%;
+}
+
+/* Контейнер карточек */
+.home__invest-cards {
+	margin-top: 38.99px;
+	display: flex;
+}
+
+/* Карточка */
+.home__invest-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+	height: 582px;
+	border-top: 1px solid var(--color-black);
+	border-bottom: 1px solid var(--color-black);
+	border-left: 1px solid var(--color-black);
+	padding: 52px 19px;
+}
+
+/* Правая граница последней карточки */
+.home__invest-card:last-child {
+	border-right: 1px solid var(--color-black);
+}
+
+/* Шапка карточки */
+.home__invest-card-header {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+/* Номер карточки */
+.home__invest-card-title {
+	font-family: Noto Mono;
+	font-weight: 400;
+	font-size: 22px;
+	line-height: 126%;
+	letter-spacing: 0%;
+}
+
+/* Заголовок карточки */
+.home__invest-card-subtitle {
+	font-family: Noto Mono;
+	font-weight: 400;
+	font-size: 36px;
+	line-height: 126%;
+	letter-spacing: 0%;
+}
+
+/* Контент карточки */
+.home__invest-card-content {
+	font-family: Noto Mono;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 150%;
+	letter-spacing: 0%;
+}
+
+/* 3. СЕКЦИЯ INFOBOX
+   ========================================================================== */
+
+.home__info-section {
+	max-width: var(--container-max-width);
+	margin: 0 auto;
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+/* 4. СЕКЦИЯ "STRATEGIES"
+   ========================================================================== */
+
+/* Основной контейнер секции стратегий */
+.home__strategies-section {
 	max-width: var(--container-max-width);
 	margin: 0 auto;
 	position: relative;
@@ -25,23 +144,17 @@
 	padding-top: 58px;
 }
 
-.home__section-second-content{
+/* Контейнер содержимого секции стратегий */
+.home__strategies-content {
 	flex-direction: column;
 	width: 100%;
-	max-width: var(--container-max-width); /* Добавить максимальную ширину */
-	margin: 0 auto; /* Центрирование */
-	padding: 0 130px; /* Отступы по бокам, как в других компонентах */
-}
-
-.home__section-check{
 	max-width: var(--container-max-width);
 	margin: 0 auto;
-	position: relative;
-	display: flex;
-	align-items: center;
+	padding: 0 130px;
 }
 
-.home__section-second-title {
+/* Заголовок секции стратегий */
+.home__strategies-title {
 	color: var(--color-white);
 	font-family: Poppins;
 	font-weight: 600;
@@ -51,7 +164,8 @@
 	margin-bottom: 10px;
 }
 
-.home__section-second-subtitle {
+/* Подзаголовок секции стратегий */
+.home__strategies-subtitle {
 	color: var(--color-white);
 	font-family: Noto Mono;
 	font-weight: 400;
@@ -61,7 +175,8 @@
 	margin-bottom: 64px;
 }
 
-.home__section-second-cards {
+/* Контейнер карточек стратегий */
+.home__strategies-cards {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -69,12 +184,14 @@
 	gap: 21px;
 }
 
-.home__section-second-card {
+/* Карточка стратегии */
+.home__strategies-card {
 	background-color: var(--color-medium-gray);
 	padding: 52px 19px;
 }
 
-.home__section-second-card-title {
+/* Заголовок-метка карточки стратегии */
+.home__strategies-card-title {
 	border: 1px solid var(--color-white);
 	height: 40px;
 	display: flex;
@@ -90,7 +207,8 @@
 	margin-bottom: 12px;
 }
 
-.home__section-second-card-subtitle {
+/* Название стратегии */
+.home__strategies-card-subtitle {
 	font-family: Noto Mono;
 	font-weight: 400;
 	font-size: 36px;
@@ -100,7 +218,8 @@
 	margin-bottom: 36px;
 }
 
-.home__section-second-card-description {
+/* Описание стратегии */
+.home__strategies-card-description {
 	font-family: Noto Mono;
 	font-weight: 400;
 	font-size: 16px;
@@ -110,85 +229,10 @@
 	margin-bottom: 36px;
 }
 
+/* 5. АДАПТИВНЫЕ СТИЛИ
+   ========================================================================== */
 
-
-
-.home__section-first-title-wrapper {
-	display: flex;
-	flex-direction: raw;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.home__section-first-title {
-	font-family: Poppins;
-	font-weight: 600;
-	font-size: 24px;
-	line-height: 118%;
-	letter-spacing: 0%;
-}
-
-.home__section-first-subtitle {
-	max-width: 570px;
-	font-family: Noto Mono;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 150%;
-	letter-spacing: 0%;
-}
-
-.home__section-first-cards {
-	margin-top: 38.99px;
-	display: flex;
-}
-
-.home__section-first-card {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	width: 100%;
-	height: 582px;
-	border-top: 1px solid var(--color-black);
-	border-bottom: 1px solid var(--color-black);
-	border-left: 1px solid var(--color-black);
-	padding: 52px 19px;
-}
-
-/* У последней карточки добавляем правую границу */
-.home__section-first-card:last-child {
-	border-right: 1px solid var(--color-black);
-}
-
-.home__section-first-card-header {
-	display: flex;
-	flex-direction: column;
-	gap: 12px;
-}
-
-.home__section-first-card-title {
-	font-family: Noto Mono;
-	font-weight: 400;
-	font-size: 22px;
-	line-height: 126%;
-	letter-spacing: 0%;
-}
-
-.home__section-first-card-subtitle {
-	font-family: Noto Mono;
-	font-weight: 400;
-	font-size: 36px;
-	line-height: 126%;
-	letter-spacing: 0%;
-}
-
-.home__section-first-card-content {
-	font-family: Noto Mono;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 150%;
-	letter-spacing: 0%;
-}
-/* Responsive */
+/* Мобильные устройства */
 @media (max-width: 600px) {
 	.home__description {
 		font-size: 18px;
