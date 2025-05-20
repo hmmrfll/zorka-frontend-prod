@@ -1,41 +1,44 @@
 .info-box-container {
-	position: relative;
+	width: 100%;
+	max-width: var(--container-max-width); /* Добавить максимальную ширину */
+	margin: 0 auto; /* Центрирование */
+	padding: 0 130px; /* Отступы по бокам, как в других компонентах */
 	display: flex;
-	align-items: center;
-	justify-content: right;
-	margin-top: 80px;
-	margin-bottom: 100px;
+	flex-direction: row;
+}
+
+.info-box-throw-left {
+	position: absolute;
 	width: 100%;
 }
 
-.info-box-throw{
+.info-box-throw-right{
 	position: absolute;
-	width: 1000vh;
-	transform: translate(50%);
-	height: 3px;
-	z-index: 0;
-	background-color: var(--color-black);
+	right: 0;
 }
 
 .info-box {
+	margin-top: 93px;
+	margin-bottom: 104px;
+	margin-left: auto;
 	position: relative;
-	max-width: 679px;
-	height: 252px;
-	padding: 50px;
+	max-width: 579px;
+	min-width: 579px;
+	height: 152px;
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	background-color: var(--color-white);
 	box-sizing: border-box;
 	z-index: 2;
+	padding: 24px 31px;
 }
 
 .info-box-border {
-    position: absolute;
-    top: 25px; /* Учитываем padding */
-    left: 25px; /* Учитываем padding */
-    width: calc(100% - 50px); /* 24px слева + 24px справа */
-    height: calc(100% - 50px); /* 24px сверху + 24px снизу */
-    pointer-events: none;
+	position: absolute;
+	width: 100%; /* 24px слева + 24px справа */
+	height: 100%; /* 24px сверху + 24px снизу */
+	pointer-events: none;
 }
 
 .info-box-text {
@@ -57,58 +60,4 @@
 	height: 2px;
 	background-color: #323232;
 	z-index: 1;
-}
-
-.info-box-arrow-left {
-	width: calc(50% - 350px);
-	right: 50%;
-	margin-right: 350px;
-}
-
-.info-box-arrow-right {
-	width: calc(50% - 350px);
-	left: 50%;
-	margin-left: 350px;
-}
-
-.info-box-arrow-left::before,
-.info-box-arrow-right::before {
-	content: '';
-	position: absolute;
-	width: 10px;
-	height: 10px;
-	border-top: 2px solid #323232;
-	border-right: 2px solid #323232;
-}
-
-.info-box-arrow-left::before {
-	left: 0;
-	transform: rotate(225deg);
-	margin-left: -5px;
-	margin-top: -4px;
-}
-
-.info-box-arrow-right::before {
-	right: 0;
-	transform: rotate(45deg);
-	margin-right: -5px;
-	margin-top: -4px;
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-	.info-box {
-		width: 90%;
-		height: auto;
-	}
-
-	.info-box-arrow-left {
-		width: 10%;
-		margin-right: 45%;
-	}
-
-	.info-box-arrow-right {
-		width: 10%;
-		margin-left: 45%;
-	}
 }

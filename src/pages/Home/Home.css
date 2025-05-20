@@ -9,7 +9,7 @@
 	width: 100%;
 	max-width: var(--container-max-width); /* Добавить максимальную ширину */
 	margin: 0 auto; /* Центрирование */
-	padding: 0 15px; /* Отступы по бокам, как в других компонентах */
+	padding: 0 130px; /* Отступы по бокам, как в других компонентах */
 }
 
 .home__section-first {
@@ -17,11 +17,28 @@
 }
 
 .home__section-second {
-	width: 100%;
+	max-width: var(--container-max-width);
+	margin: 0 auto;
 	position: relative;
 	height: 1033px;
 	background-color: var(--color-dark-gray);
-	padding: 58px;
+	padding-top: 58px;
+}
+
+.home__section-second-content{
+	flex-direction: column;
+	width: 100%;
+	max-width: var(--container-max-width); /* Добавить максимальную ширину */
+	margin: 0 auto; /* Центрирование */
+	padding: 0 130px; /* Отступы по бокам, как в других компонентах */
+}
+
+.home__section-check{
+	max-width: var(--container-max-width);
+	margin: 0 auto;
+	position: relative;
+	display: flex;
+	align-items: center;
 }
 
 .home__section-second-title {
@@ -31,6 +48,7 @@
 	font-size: 64px;
 	line-height: 118%;
 	letter-spacing: 0%;
+	margin-bottom: 10px;
 }
 
 .home__section-second-subtitle {
@@ -40,7 +58,60 @@
 	font-size: 16px;
 	line-height: 150%;
 	letter-spacing: 0%;
+	margin-bottom: 64px;
 }
+
+.home__section-second-cards {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+	gap: 21px;
+}
+
+.home__section-second-card {
+	background-color: var(--color-medium-gray);
+	padding: 52px 19px;
+}
+
+.home__section-second-card-title {
+	border: 1px solid var(--color-white);
+	height: 40px;
+	display: flex;
+	align-items: center;
+	width: fit-content;
+	padding: 0 16px;
+	font-family: Noto Mono;
+	font-weight: 400;
+	font-size: 22px;
+	line-height: 126%;
+	letter-spacing: 0%;
+	color: var(--color-white);
+	margin-bottom: 12px;
+}
+
+.home__section-second-card-subtitle {
+	font-family: Noto Mono;
+	font-weight: 400;
+	font-size: 36px;
+	line-height: 126%;
+	letter-spacing: 0%;
+	color: var(--color-white);
+	margin-bottom: 36px;
+}
+
+.home__section-second-card-description {
+	font-family: Noto Mono;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 150%;
+	letter-spacing: 0%;
+	color: var(--color-white);
+	margin-bottom: 36px;
+}
+
+
+
 
 .home__section-first-title-wrapper {
 	display: flex;

@@ -1,16 +1,16 @@
 .footer {
-	padding: 20px 0;
+	padding-bottom: 36px;
 	background: var(--color-white);
 }
 
 .footer__container {
 	max-width: var(--container-max-width);
+	height: 100px;
 	margin: 0 auto;
-	padding: 0 15px;
+	padding: 0 130px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 33px;
 }
 
 .footer__logo {
@@ -62,23 +62,22 @@
 }
 
 .footer__social-link {
+	position: relative;
 	background-color: rgba(50, 50, 50, 1);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	width: 42px;
 	height: 42px;
+	z-index: 10; /* Гарантируем, что основной элемент выше */
 	transition: transform 150ms linear;
+	overflow: visible;
 }
 
-.footer__social-link:hover {
-	transform: scale(0.9);
-}
+
 
 .footer__bottom {
-	max-width: var(--container-max-width);
-	margin: 0 auto;
-	padding: 0 15px;
+	width: 100%;
 }
 
 .footer__line {
