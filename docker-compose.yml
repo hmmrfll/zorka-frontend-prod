@@ -9,7 +9,7 @@ services:
     build:
       context: ./
     ports:
-      - '${FRONTEND_PORT_LOCAL}:${VITE_PORT}'
+      - 5173:5173
     networks:
       - dev
     command: npm start
