@@ -6,6 +6,18 @@
     transform: translateY(-1px);
     animation: onMountBot 1s linear forwards;
     background: var(--color-white);
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+
+    @media (max-width: 576px) {
+      display: none;
+    }
+
+    @media (max-width: 480px) {
+      display: none;
+    }
   }
 
   .header__container {

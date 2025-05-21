@@ -5,6 +5,8 @@ import { InfoBox } from '../../components/InfoBox/InfoBox';
 import './Home.css';
 import { GradientSphere } from '../../../public/img/GradientSphere';
 import { WhiteSphere } from '../../../public/img/WhiteSphere';
+import { GradientSphereMobile } from '../../../public/img/GradientSphereMobile';
+import { WhiteSphereMobile } from '../../../public/img/WhiteSphereMobile';
 import { investSection, infoBox, strategiesSection } from '../../data/homeContent';
 
 export const Home: React.FC = () => {
@@ -44,8 +46,12 @@ export const Home: React.FC = () => {
 								<div className="home__strategies-card-title">{card.title}</div>
 								<div className="home__strategies-card-subtitle">{card.subtitle}</div>
 								<div className="home__strategies-card-description">{card.description}</div>
-								<div className="home__strategies-card-img">
+								<div className="home__strategies-card-img desktop">
 									{card.sphereType === 'gradient' ? <GradientSphere /> : <WhiteSphere />}
+								</div>
+
+								<div className="home__strategies-card-img mobile">
+									{card.sphereType === 'gradient' ? <GradientSphereMobile /> : <WhiteSphereMobile />}
 								</div>
 							</div>
 						))}

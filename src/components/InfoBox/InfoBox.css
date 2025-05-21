@@ -5,6 +5,11 @@
 	padding: 0 130px; /* Отступы по бокам, как в других компонентах */
 	display: flex;
 	flex-direction: row;
+
+	@media (max-width: 768px) {
+		padding: 0 15px;
+		justify-content: center;
+	}
 }
 
 .info-box-throw-left {
@@ -12,7 +17,7 @@
 	width: 100%;
 }
 
-.info-box-throw-right{
+.info-box-throw-right {
 	position: absolute;
 	right: 0;
 }
@@ -32,12 +37,22 @@
 	box-sizing: border-box;
 	z-index: 2;
 	padding: 24px 31px;
+
+	@media (max-width: 768px) {
+		max-width: 249px;
+		min-width: 249px;
+		height: 205px;
+		margin-bottom: 81px;
+		margin-top: 49px;
+		margin-left: 0;
+		left: 30px;
+	}
 }
 
 .info-box-border {
 	position: absolute;
-	width: 100%; /* 24px слева + 24px справа */
-	height: 100%; /* 24px сверху + 24px снизу */
+	width: 100%;
+	height: 100%;
 	pointer-events: none;
 }
 
@@ -53,6 +68,10 @@
 	word-break: break-word;
 	width: 100%;
 	height: 100%;
+
+	@media (max-width: 768px) {
+		font-size: 16px;
+	}
 }
 
 .info-box-arrow {
@@ -60,4 +79,20 @@
 	height: 2px;
 	background-color: #323232;
 	z-index: 1;
+}
+
+.desktop {
+	display: block;
+
+	@media (max-width: 768px) {
+		display: none;
+	}
+}
+
+.mobile {
+	display: none;
+
+	@media (max-width: 768px) {
+		display: block;
+	}
 }

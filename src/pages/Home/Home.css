@@ -12,7 +12,7 @@
 /* 1. ОБЩИЕ СТИЛИ СТРАНИЦЫ
    ========================================================================== */
 
-   .home {
+.home {
 	min-height: 100vh;
 	background: var(--color-white);
 }
@@ -25,14 +25,14 @@
 	position: sticky;
 	flex-direction: column;
 	width: 100%;
+	height: 100%;
 	max-width: var(--container-max-width);
 	margin: 0 auto;
 	padding: 0 130px;
-}
 
-/* Основной блок секции инвестиций */
-.home__invest-section {
-	height: 676px;
+	@media (max-width: 768px) {
+		padding: 0 15px;
+	}
 }
 
 /* Контейнер заголовка и подзаголовка */
@@ -41,6 +41,11 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+		align-items: flex-start;
+	}
 }
 
 /* Заголовок секции */
@@ -50,6 +55,10 @@
 	font-size: 24px;
 	line-height: 118%;
 	letter-spacing: 0%;
+
+	@media (max-width: 768px) {
+		margin-bottom: 14px;
+	}
 }
 
 /* Подзаголовок секции */
@@ -60,66 +69,12 @@
 	font-size: 16px;
 	line-height: 150%;
 	letter-spacing: 0%;
-}
 
-/* Контейнер карточек */
-.home__invest-cards {
-	margin-top: 38.99px;
-	display: flex;
+	@media (max-width: 768px) {
+		max-width: 312px;
+		font-size: 14px;
+	}
 }
-
-/* Карточка */
-.home__invest-card {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	width: 100%;
-	height: 582px;
-	border-top: 1px solid var(--color-black);
-	border-bottom: 1px solid var(--color-black);
-	border-left: 1px solid var(--color-black);
-	padding: 52px 19px;
-}
-
-/* Правая граница последней карточки */
-.home__invest-card:last-child {
-	border-right: 1px solid var(--color-black);
-}
-
-/* Шапка карточки */
-.home__invest-card-header {
-	display: flex;
-	flex-direction: column;
-	gap: 12px;
-}
-
-/* Номер карточки */
-.home__invest-card-title {
-	font-family: Noto Mono;
-	font-weight: 400;
-	font-size: 22px;
-	line-height: 126%;
-	letter-spacing: 0%;
-}
-
-/* Заголовок карточки */
-.home__invest-card-subtitle {
-	font-family: Noto Mono;
-	font-weight: 400;
-	font-size: 36px;
-	line-height: 126%;
-	letter-spacing: 0%;
-}
-
-/* Контент карточки */
-.home__invest-card-content {
-	font-family: Noto Mono;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 150%;
-	letter-spacing: 0%;
-}
-
 /* 3. СЕКЦИЯ INFOBOX
    ========================================================================== */
 
@@ -142,6 +97,11 @@
 	height: 1033px;
 	background-color: var(--color-dark-gray);
 	padding-top: 58px;
+
+	@media (max-width: 768px) {
+		height: 1315px;
+		padding-top: 33px;
+	}
 }
 
 /* Контейнер содержимого секции стратегий */
@@ -151,6 +111,10 @@
 	max-width: var(--container-max-width);
 	margin: 0 auto;
 	padding: 0 130px;
+
+	@media (max-width: 768px) {
+		padding: 0 15px;
+	}
 }
 
 /* Заголовок секции стратегий */
@@ -162,6 +126,10 @@
 	line-height: 118%;
 	letter-spacing: 0%;
 	margin-bottom: 10px;
+
+	@media (max-width: 768px) {
+		font-size: 32px;
+	}
 }
 
 /* Подзаголовок секции стратегий */
@@ -173,6 +141,10 @@
 	line-height: 150%;
 	letter-spacing: 0%;
 	margin-bottom: 64px;
+
+	@media (max-width: 768px) {
+		margin-bottom: 37px;
+	}
 }
 
 /* Контейнер карточек стратегий */
@@ -182,12 +154,22 @@
 	justify-content: space-between;
 	width: 100%;
 	gap: 21px;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+		gap: 25px;
+	}
 }
 
 /* Карточка стратегии */
 .home__strategies-card {
 	background-color: var(--color-medium-gray);
 	padding: 52px 19px;
+
+	@media (max-width: 768px) {
+		height: 529px;
+		padding: 32px 16px;
+	}
 }
 
 /* Заголовок-метка карточки стратегии */
@@ -205,6 +187,10 @@
 	letter-spacing: 0%;
 	color: var(--color-white);
 	margin-bottom: 12px;
+
+	@media (max-width: 768px) {
+		margin-bottom: 11px;
+	}
 }
 
 /* Название стратегии */
@@ -216,6 +202,11 @@
 	letter-spacing: 0%;
 	color: var(--color-white);
 	margin-bottom: 36px;
+
+	@media (max-width: 768px) {
+		font-size: 31.78px;
+		margin-bottom: 16px;
+	}
 }
 
 /* Описание стратегии */
@@ -227,14 +218,28 @@
 	letter-spacing: 0%;
 	color: var(--color-white);
 	margin-bottom: 36px;
+
+	@media (max-width: 768px) {
+		font-size: 14.12px;
+		margin-bottom: 16px;
+	}
 }
 
 /* 5. АДАПТИВНЫЕ СТИЛИ
    ========================================================================== */
 
-/* Мобильные устройства */
-@media (max-width: 600px) {
-	.home__description {
-		font-size: 18px;
+.desktop {
+	display: block;
+
+	@media (max-width: 768px) {
+		display: none;
+	}
+}
+
+.mobile {
+	display: none;
+
+	@media (max-width: 768px) {
+		display: block;
 	}
 }
